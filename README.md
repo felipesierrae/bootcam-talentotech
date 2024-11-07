@@ -1,1 +1,0 @@
-# bootcam-talentotech
