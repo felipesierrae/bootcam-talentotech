@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: clusterissuer-letsencrypt-labs
+  name: pacman
+  namespace: pacman
+spec:
+  ingressClassName: nginx-labs
+  rules:
+  - host: pacman-lab.mylabsfs.ga
+    http:
+      paths:
+      - backend:
+          service:
+            name: pacman
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - pacman-lab.mylabsfs.ga
+    secretName: clusterissuer-letsencrypt-labs

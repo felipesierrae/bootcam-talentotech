@@ -1,0 +1,10 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: ebs-sc
+provisioner: kubernetes.io/aws-ebs
+parameters:
+  type: gp3            # Tipo de disco EBS (gp2, gp3, io1, etc.)
+  fsType: ext4         # Tipo de sistema de archivos del volumen
+  # encrypted: "true"    # Opcional: encripta el disco si lo deseas
+volumeBindingMode: WaitForFirstConsumer
